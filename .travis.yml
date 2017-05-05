@@ -12,6 +12,12 @@ install:
     - source /opt/qt*/bin/qt*-env.sh
 
 script:
+  - svn checkout <svn://svn.code.sf.net/p/qwt/code/branches/qwt-6.1> qwt 
+  - cd qwt
+  - qmake
+  - make -j4
+  - sudo make install
+  - cd ..
   - qmake PREFIX=/usr
   - make -j4
   - make INSTALL_ROOT=appdir install ; find appdir/
